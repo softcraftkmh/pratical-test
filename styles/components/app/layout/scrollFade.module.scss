@@ -1,0 +1,12 @@
+.container {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 120px;
+	background: linear-gradient(
+		180deg,
+		rgba(248, 248, 248, 0) 0%,
+		#f8f8f8 100%
+	);
+}
