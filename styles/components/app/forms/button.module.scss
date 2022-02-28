@@ -1,0 +1,16 @@
+.container {
+	border: 0;
+	outline: 0;
+	background-color: var(--blue);
+	color: var(--white);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 30px;
+	width: 200px;
+	height: 48px;
+	border-radius: 25px;
+}
