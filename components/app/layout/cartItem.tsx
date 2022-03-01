@@ -23,7 +23,7 @@ const CartItem = (props: CartItemProps) => {
 	const { data, error } = useSWR<CardGetResponse>('/cards/' + id)
 
 	useEffect(() => {
-		if (data) {
+		if (data && data.data) {
 			dispatch(
 				setItemWithPrices({
 					id: data.data.id,
@@ -34,7 +34,7 @@ const CartItem = (props: CartItemProps) => {
 	}, [data])
 
 	// TODO: Improve with skeleton UI
-	if (!data) {
+	if (!data || !data.data) {
 		return <div>Loading...</div>
 	} else if (error) {
 		return <div>Error!</div>
