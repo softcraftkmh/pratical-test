@@ -34,3 +34,18 @@
 		background-size: cover;
 	}
 }
+
+.itemsCount {
+	display: block;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	font-size: 12px;
+	top: -4px;
+	left: -4px;
+	border-radius: 50%;
+	background-color: var(--red);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

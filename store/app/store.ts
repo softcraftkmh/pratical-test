@@ -1,11 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 
-import loadingReducer from '../features/loadingSlice'
+import uiReducer from '../features/uiSlice'
 import cartReducer from '../features/cartSlice'
 
 export function makeStore() {
 	return configureStore({
-		reducer: { loading: loadingReducer, cart: cartReducer },
+		reducer: { ui: uiReducer, cart: cartReducer },
 	})
 }
 

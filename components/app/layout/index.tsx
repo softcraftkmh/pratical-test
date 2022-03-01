@@ -1,15 +1,17 @@
+import { useState } from 'react'
+
 import CartButton from '@/components/app/layout/cartButton'
 import CartModal from '@/components/app/layout/cartModal'
+import MessageModal from '@/components/app/layout/messageModal'
 import ScrollFade from '@/components/app/layout/scrollFade'
 import TopNav from '@/components/app/layout/topNav'
 import { useAppSelector } from '@/store/app/hooks'
 import styles from '@/styles/components/app/layout/index.module.scss'
-import { useState } from 'react'
 
 const Layout: React.FC = (props) => {
 	const { children } = props
-	const { isLoading } = useAppSelector((state) => state.loading)
-	const [isCartModalOpen, setCartModalOpen] = useState(true)
+	const { isLoading } = useAppSelector((state) => state.ui)
+	const [isCartModalOpen, setCartModalOpen] = useState(false)
 
 	return (
 		<>
@@ -17,16 +19,20 @@ const Layout: React.FC = (props) => {
 				isOpen={isCartModalOpen}
 				onRequestClose={() => setCartModalOpen(false)}
 			/>
+			<MessageModal />
 			<TopNav />
+			{/* TODO: Separate component */}
 			<div className={styles.container}>
 				{isLoading && <div className={styles.loading} />}
 				{children}
 			</div>
-			<CartButton
-				onClick={() => {
-					setCartModalOpen(true)
-				}}
-			/>
+			{!isCartModalOpen && (
+				<CartButton
+					onClick={() => {
+						setCartModalOpen(true)
+					}}
+				/>
+			)}
 			<ScrollFade />
 		</>
 	)

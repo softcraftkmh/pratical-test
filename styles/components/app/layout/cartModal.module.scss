@@ -38,21 +38,18 @@
 	bottom: 0;
 	right: 0;
 	left: 0;
+	height: 250px;
 
 	&Inner {
-		position: relative;
-		top: -80px;
 		width: 220px;
-		display: flex;
-		flex-direction: column;
+		display: grid;
+		grid-auto-rows: auto;
 		margin: 0 auto;
 	}
 }
 
 .fade {
-	position: relative;
-	height: 80px;
-	top: -80px;
+	height: 50px;
 	background: linear-gradient(
 		180deg,
 		rgba(255, 255, 255, 0) 0%,
@@ -95,4 +92,9 @@
 	&Content {
 		color: var(--red);
 	}
+}
+
+.payNow {
+	width: 100%;
+	margin-top: 26px;
 }

@@ -1,10 +1,14 @@
 import Modal from 'react-modal'
+import { useDispatch } from 'react-redux'
 
 import CartItem from '@/components/app/layout/cartItem'
+import Button from '@/components/forms/button'
 import { useAppSelector } from '@/store/app/hooks'
-import styles from '@/styles/components/app/layout/cartModal.module.scss'
-import { useDispatch } from 'react-redux'
 import { clearAll } from '@/store/features/cartSlice'
+
+import styles from '@/styles/components/app/layout/cartModal.module.scss'
+import { showMessage } from '@/store/features/uiSlice'
+import ModalCloseButton from '@/components/forms/closeButton'
 
 type CartModalProps = {
 	isOpen: boolean
@@ -21,6 +25,20 @@ const CartModal = (props: CartModalProps) => {
 	const onClearAll = () => {
 		dispatch(clearAll())
 		onRequestClose()
+	}
+
+	const onPayNow = () => {
+		onRequestClose()
+		// NOTE: moke API call wait time
+		setTimeout(() => {
+			dispatch(clearAll())
+			dispatch(
+				showMessage({
+					type: 'success',
+					text: 'Payment success!',
+				})
+			)
+		}, 3000)
 	}
 
 	return (
@@ -64,8 +82,12 @@ const CartModal = (props: CartModalProps) => {
 							)}
 						</span>
 					</div>
+					<Button className={styles.payNow} onClick={onPayNow}>
+						Pay now
+					</Button>
 				</div>
 			</div>
+			<ModalCloseButton onClick={onRequestClose} />
 		</Modal>
 	)
 }
