@@ -27,7 +27,7 @@ type Images = {
 	logo: string
 }
 
-type Set = {
+export type Set = {
 	id: string
 	name: string
 	series: string

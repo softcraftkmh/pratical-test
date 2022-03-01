@@ -1,0 +1,24 @@
+.container {
+	width: 380px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 1fr 80px 80px 70px;
+	margin-bottom: 40px;
+
+	> * {
+		box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.03);
+	}
+
+	> :first-child {
+		border-top-left-radius: 100px;
+		border-bottom-left-radius: 100px;
+	}
+
+	> :not(:first-child) {
+		border-left: 1px solid var(--grey);
+	}
+}
+
+.submit {
+	display: none;
+}

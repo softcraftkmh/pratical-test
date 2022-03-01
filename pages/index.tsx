@@ -3,20 +3,31 @@ import useSWR from 'swr'
 
 import styles from '@/styles/pages/home.module.scss'
 import Card from '@/components/home/card'
+import Filter from '@/components/home/filter'
+import { useRouter } from 'next/router'
 
 const Home = () => {
-	const { data, error } = useSWR<CardGetResponse>('/cards?pageSize=12')
+	const router = useRouter()
+
+	const { data } = useSWR<CardGetResponse>(
+		router.query.q
+			? `/cards?q=${router.query.q}&pageSize=12`
+			: '/cards?pageSize=12'
+	)
 
 	if (!data) {
 		return <div>Loading...</div>
 	}
 
 	return (
-		<div className={styles.container}>
-			{data.data.map((card) => (
-				<Card key={card.id} card={card} />
-			))}
-		</div>
+		<>
+			<Filter onSubmit={(filterQuery) => router.push(filterQuery)} />
+			<div className={styles.container}>
+				{data.data?.map((card) => (
+					<Card key={card.id} card={card} />
+				))}
+			</div>
+		</>
 	)
 }
 

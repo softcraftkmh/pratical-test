@@ -1,4 +1,4 @@
-import type { Card } from '@/models/index'
+import type { Card, Set } from '@/models/index'
 
 export type GenericResponse = {
 	page: number
@@ -9,4 +9,16 @@ export type GenericResponse = {
 
 export type CardGetResponse = GenericResponse & {
 	data: Card[]
+}
+
+export type TypeGetResponse = GenericResponse & {
+	data: string[]
+}
+
+export type RarityGetResponse = GenericResponse & {
+	data: string[]
+}
+
+export type SetGetResponse = GenericResponse & {
+	data: Set[]
 }
