@@ -19,7 +19,7 @@
         -   [✔️] Rarity
         -   [✔️] Set
     -   [✔️] Loading/PageSize limit: `12` cards on each api call
-    -   [ ] Implement `Loadmore` style pagination
+    -   [✔️] Implement `Loadmore` style pagination
 -   [✔️] Use card `price` data from `cardmarket.prices.*` or `cardmarket.prices.averageSellPrice`
 -   [✔️] Use card's stock from `set.total`
 -   [✔️] Cart:
