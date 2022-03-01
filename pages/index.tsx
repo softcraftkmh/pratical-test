@@ -5,6 +5,7 @@ import styles from '@/styles/pages/home.module.scss'
 import Card from '@/components/home/card'
 import Filter from '@/components/home/filter'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 
 type HomeProps = {
 	initialCardsData: CardsGetResponse
@@ -12,11 +13,12 @@ type HomeProps = {
 
 const Home = (props: HomeProps) => {
 	const router = useRouter()
+	const [pageSize, setPageSize] = useState(12)
 
 	const { data } = useSWR<CardsGetResponse>(
 		router.query.q
-			? `/cards?q=${router.query.q}&pageSize=12`
-			: '/cards?pageSize=12',
+			? `/cards?q=${router.query.q}&pageSize=${pageSize}`
+			: `/cards?pageSize=${pageSize}`,
 		{
 			fallbackData: props.initialCardsData,
 		}
@@ -24,6 +26,10 @@ const Home = (props: HomeProps) => {
 
 	if (!data) {
 		return <div>Loading...</div>
+	}
+
+	const onShowMore = () => {
+		setPageSize(pageSize + 12)
 	}
 
 	return (
@@ -34,6 +40,9 @@ const Home = (props: HomeProps) => {
 					<Card key={card.id} card={card} />
 				))}
 			</div>
+			<button className={styles.showMore} onClick={onShowMore}>
+				show more
+			</button>
 		</>
 	)
 }

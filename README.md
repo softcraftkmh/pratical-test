@@ -1,34 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# React take-home challenge
 
-## Getting Started
+### Resources
 
-First, run the development server:
+-   API: <https://pokemontcg.io>
+-   Design:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+    -   file: <https://figma.fun/hIqDAm>
+    -   prototype: <https://figma.fun/8blDqC>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    Also available as `design.fig` in this folder, open it using <https://figma.com>.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Requirement
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+-   [✔️] Card list:
+    -   [✔️] Implement search/filter:
+        -   [✔️] Name
+        -   [✔️] Type
+        -   [✔️] Rarity
+        -   [✔️] Set
+    -   [✔️] Loading/PageSize limit: `12` cards on each api call
+    -   [ ] Implement `Loadmore` style pagination
+-   [✔️] Use card `price` data from `cardmarket.prices.*` or `cardmarket.prices.averageSellPrice`
+-   [✔️] Use card's stock from `set.total`
+-   [✔️] Cart:
+    -   [✔️] Display selected cards as per design
+    -   [✔️] Quantity must be able to increase, decrease & remove. Must respect the stock left limit
+    -   [✔️] Display total number of selected cards
+    -   [✔️] Display total price of all the cards
+    -   [✔️] All cards should be clearable at once from cart
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+If you found missing requirements or have any questions, please feel free to contact us.
 
-## Learn More
+## Notes
 
-To learn more about Next.js, take a look at the following resources:
+-   Please provide a way on how to run and build your application
+-   You can use any library, plugins & styling solutions
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Impress us
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The followings are ways you can get better impressions from us. But remember, **they're not required**.
 
-## Deploy on Vercel
+-   Build near pixel-perfect UIs
+-   Responsive to any screen sizes
+-   Smooth & Snappy CSS Transitions
+-   Using Nextjs with `getServerSideProps` or `getStaticProps`
+-   Using React hooks
+-   Using TypeScript
+-   Well-structured and organized repository
+-   Commenting your code
+-   Writing tests
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Good luck ✌️
