@@ -1,3 +1,4 @@
+import CartModal from '@/components/app/layout/cartModal'
 import ScrollFade from '@/components/app/layout/scrollFade'
 import TopNav from '@/components/app/layout/topNav'
 import { useAppSelector } from '@/store/app/hooks'
@@ -9,6 +10,7 @@ const Layout: React.FC = (props) => {
 
 	return (
 		<>
+			<CartModal />
 			<TopNav />
 			<div className={styles.container}>
 				{isLoading && <div className={styles.loading} />}

@@ -5,6 +5,9 @@ import Button from '@/components/forms/button'
 import type { Card as CardType } from '@/models/index'
 
 import styles from '@/styles/components/home/card.module.scss'
+import { useAppDispatch, useAppSelector } from '@/store/app/hooks'
+import { addItem } from '@/store/features/cartSlice'
+import clsx from 'clsx'
 
 type CardProps = {
 	card: CardType
@@ -12,6 +15,22 @@ type CardProps = {
 
 const Card = (props: CardProps) => {
 	const { card } = props
+	const dispatch = useAppDispatch()
+	const cart = useAppSelector((state) => state.cart)
+	const isSelected = cart.items.find((item) => item.id === props.card.id)
+
+	const handleSelectCard = () => {
+		if (isSelected) {
+			return
+		} else {
+			dispatch(
+				addItem({
+					id: props.card.id,
+					quantity: 1,
+				})
+			)
+		}
+	}
 
 	return (
 		<div className={styles.container}>
@@ -30,7 +49,15 @@ const Card = (props: CardProps) => {
 					</span>
 				</div>
 			</div>
-			<Button className={styles.button}>Select card</Button>
+			<Button
+				className={clsx(
+					styles.button,
+					isSelected && styles.buttonSelected
+				)}
+				onClick={handleSelectCard}
+			>
+				{isSelected ? 'Selected' : 'Select card'}
+			</Button>
 		</div>
 	)
 }

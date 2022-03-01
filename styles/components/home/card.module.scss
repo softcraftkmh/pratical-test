@@ -59,4 +59,14 @@
 	background-color: var(--orange);
 	color: var(--black);
 	box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.07);
+	transition: all 0.2s ease-in-out;
+
+	&:hover {
+		transform: scale(1.05);
+	}
+
+	&Selected {
+		background-color: var(--black);
+		color: var(--white);
+	}
 }

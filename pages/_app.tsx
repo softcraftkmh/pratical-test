@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 
+import Modal from 'react-modal'
 import { Provider } from 'react-redux'
 import { SWRConfig } from 'swr'
 
@@ -14,8 +15,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 		<Provider store={store}>
 			<SWRConfig
 				value={{
-					refreshInterval: 100000,
-					fetcher: fetcher,
+					refreshInterval: 10000 * 60,
+					fetcher,
 				}}
 			>
 				<Layout>
@@ -25,5 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 		</Provider>
 	)
 }
+
+Modal.setAppElement('#__next')
 
 export default MyApp
