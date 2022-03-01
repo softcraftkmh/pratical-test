@@ -5,14 +5,19 @@ type Item = {
 	quantity: number
 }
 
+type ItemWithPrice = {
+	id: string
+	price: number
+}
+
 export type CartState = {
 	items: Item[]
-	totalPrice: number
+	itemsWithPrice: ItemWithPrice[]
 }
 
 const initialState: CartState = {
 	items: [],
-	totalPrice: 0,
+	itemsWithPrice: [],
 }
 
 export const cartSlice = createSlice({
@@ -27,7 +32,6 @@ export const cartSlice = createSlice({
 			} else {
 				state.items.push({ id, quantity })
 			}
-			state.totalPrice += quantity * 100
 		},
 		removeItem: (state, action: PayloadAction<Item>) => {
 			const { id, quantity } = action.payload
@@ -36,13 +40,27 @@ export const cartSlice = createSlice({
 				item.quantity -= quantity
 				if (item.quantity <= 0) {
 					state.items = state.items.filter((item) => item.id !== id)
+					state.itemsWithPrice = state.itemsWithPrice.filter(
+						(item) => item.id !== id
+					)
 				}
-				state.totalPrice -= quantity * 100
 			}
+		},
+		// Note: this is a temporary solution to get the price of the item
+		setItemWithPrices: (state, action: PayloadAction<ItemWithPrice>) => {
+			const index = state.items.findIndex(
+				(item) => item.id === action.payload.id
+			)
+			state.itemsWithPrice[index] = action.payload
+		},
+		clearAll: (state) => {
+			state.items = []
+			state.itemsWithPrice = []
 		},
 	},
 })
 
-export const { addItem, removeItem } = cartSlice.actions
+export const { addItem, removeItem, setItemWithPrices, clearAll } =
+	cartSlice.actions
 
 export default cartSlice.reducer

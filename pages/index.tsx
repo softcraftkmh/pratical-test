@@ -1,4 +1,4 @@
-import { CardGetResponse } from '@/services/types'
+import { CardsGetResponse } from '@/services/types'
 import useSWR from 'swr'
 
 import styles from '@/styles/pages/home.module.scss'
@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 const Home = () => {
 	const router = useRouter()
 
-	const { data } = useSWR<CardGetResponse>(
+	const { data } = useSWR<CardsGetResponse>(
 		router.query.q
 			? `/cards?q=${router.query.q}&pageSize=12`
 			: '/cards?pageSize=12'

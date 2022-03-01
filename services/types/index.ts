@@ -7,8 +7,12 @@ export type GenericResponse = {
 	totalCount: number
 }
 
-export type CardGetResponse = GenericResponse & {
+export type CardsGetResponse = GenericResponse & {
 	data: Card[]
+}
+
+export type CardGetResponse = GenericResponse & {
+	data: Card
 }
 
 export type TypeGetResponse = GenericResponse & {
