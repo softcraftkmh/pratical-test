@@ -1,5 +1,10 @@
 # React take-home challenge
 
+### To start
+
+-   create `env.local` and use these values:
+-   `NEXT_PUBLIC_API_URL=https://api.pokemontcg.io/v2`
+
 ### Resources
 
 -   API: <https://pokemontcg.io>
