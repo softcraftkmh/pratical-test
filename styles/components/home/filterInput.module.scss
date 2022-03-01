@@ -1,3 +1,5 @@
+@import '../../responsiveMixin.scss';
+
 .container {
 	background-color: var(--white);
 	font-size: 14px;
@@ -9,5 +11,9 @@
 
 	::placeholder {
 		color: #bcbbbb;
+	}
+
+	@include mobile {
+		grid-column: 1 / 4;
 	}
 }

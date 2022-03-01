@@ -1,5 +1,8 @@
+@import '../../responsiveMixin.scss';
+
 .container {
 	width: 380px;
+	max-width: 90%;
 	margin: 0 auto;
 	display: grid;
 	grid-template-columns: 1fr 80px 80px 70px;
@@ -16,6 +19,29 @@
 
 	> :not(:first-child) {
 		border-left: 1px solid var(--grey);
+	}
+
+	> :nth-child(4) {
+		> div {
+			border-top-right-radius: 100px;
+			border-bottom-right-radius: 100px;
+		}
+	}
+
+	@include mobile {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 16px;
+
+		> :first-child {
+			border-radius: 100px;
+		}
+		> :not(:first-child) {
+			border-left: 0;
+
+			> div {
+				border-radius: 100px;
+			}
+		}
 	}
 }
 

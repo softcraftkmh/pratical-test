@@ -21,17 +21,6 @@ const customStyles: StylesConfig = {
 	menu: (base) => ({ ...base, zIndex: 9999 }),
 }
 
-const lastSiblingsCustomStyles: StylesConfig = {
-	control: () => ({
-		backgroundColor: 'white',
-		display: 'flex',
-		fontSize: '1.2rem',
-		borderTopRightRadius: 100,
-		borderBottomRightRadius: 100,
-	}),
-	menu: (base) => ({ ...base, zIndex: 9999 }),
-}
-
 type FilterProps = {
 	onSubmit: (query: string) => void
 }
@@ -95,7 +84,7 @@ const Filter = (props: FilterProps) => {
 							value: set.id,
 							label: set.name,
 						}))}
-						styles={lastSiblingsCustomStyles}
+						styles={customStyles}
 						components={{
 							IndicatorSeparator: () => null,
 						}}
