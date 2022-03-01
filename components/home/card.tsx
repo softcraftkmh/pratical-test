@@ -1,13 +1,12 @@
+import clsx from 'clsx'
 import Image from 'next/image'
 
 import Button from '@/components/forms/button'
-
-import type { Card as CardType } from '@/models/index'
-
-import styles from '@/styles/components/home/card.module.scss'
 import { useAppDispatch, useAppSelector } from '@/store/app/hooks'
 import { addItem } from '@/store/features/cartSlice'
-import clsx from 'clsx'
+import styles from '@/styles/components/home/card.module.scss'
+
+import type { Card as CardType } from '@/models/index'
 
 type CardProps = {
 	card: CardType

@@ -1,3 +1,4 @@
+import CartButton from '@/components/app/layout/cartButton'
 import CartModal from '@/components/app/layout/cartModal'
 import ScrollFade from '@/components/app/layout/scrollFade'
 import TopNav from '@/components/app/layout/topNav'
@@ -16,6 +17,7 @@ const Layout: React.FC = (props) => {
 				{isLoading && <div className={styles.loading} />}
 				{children}
 			</div>
+			<CartButton />
 			<ScrollFade />
 		</>
 	)
