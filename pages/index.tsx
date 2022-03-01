@@ -6,13 +6,20 @@ import Card from '@/components/home/card'
 import Filter from '@/components/home/filter'
 import { useRouter } from 'next/router'
 
-const Home = () => {
+type HomeProps = {
+	initialCardsData: CardsGetResponse
+}
+
+const Home = (props: HomeProps) => {
 	const router = useRouter()
 
 	const { data } = useSWR<CardsGetResponse>(
 		router.query.q
 			? `/cards?q=${router.query.q}&pageSize=12`
-			: '/cards?pageSize=12'
+			: '/cards?pageSize=12',
+		{
+			fallbackData: props.initialCardsData,
+		}
 	)
 
 	if (!data) {
@@ -29,6 +36,19 @@ const Home = () => {
 			</div>
 		</>
 	)
+}
+
+export const getStaticProps = async () => {
+	const res = await fetch(
+		process.env.NEXT_PUBLIC_API_URL + '/cards?pageSize=12'
+	)
+	const data = await res.json()
+
+	return {
+		props: {
+			initialCardsData: data,
+		},
+	}
 }
 
 export default Home

@@ -2,7 +2,7 @@ import '../styles/globals.css'
 
 import Modal from 'react-modal'
 import { Provider } from 'react-redux'
-import { SWRConfig } from 'swr'
+import { SWRConfig, SWRConfiguration } from 'swr'
 
 import Layout from '@/components/app/layout'
 import store from '@/store/app/store'
@@ -10,7 +10,7 @@ import fetcher from '@/utils/fetcher'
 
 import type { AppProps } from 'next/app'
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps & SWRConfiguration) {
 	return (
 		<Provider store={store}>
 			<SWRConfig

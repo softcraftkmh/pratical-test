@@ -64,6 +64,7 @@ const Filter = (props: FilterProps) => {
 						}}
 						onChange={(v: any) => setFieldValue('type', v.value)}
 						placeholder="Type"
+						instanceId="type"
 					/>
 					<Select
 						name="rarity"
@@ -77,6 +78,7 @@ const Filter = (props: FilterProps) => {
 						}}
 						onChange={(v: any) => setFieldValue('rarity', v.value)}
 						placeholder="Rarity"
+						instanceId="rarity"
 					/>
 					<Select
 						name="set"
@@ -90,6 +92,7 @@ const Filter = (props: FilterProps) => {
 						}}
 						onChange={(v: any) => setFieldValue('set', v.value)}
 						placeholder="Set"
+						instanceId="set"
 					/>
 					<button type="submit" className={styles.submit} />
 				</Form>
