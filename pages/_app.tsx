@@ -9,6 +9,7 @@ import store from '@/store/app/store'
 import fetcher from '@/utils/fetcher'
 
 import type { AppProps } from 'next/app'
+import Head from 'next/head'
 
 function MyApp({ Component, pageProps }: AppProps & SWRConfiguration) {
 	return (
@@ -21,6 +22,9 @@ function MyApp({ Component, pageProps }: AppProps & SWRConfiguration) {
 				}}
 			>
 				<Layout>
+					<Head>
+						<title>Pokemon TCG Marketplace</title>
+					</Head>
 					<Component {...pageProps} />
 				</Layout>
 			</SWRConfig>
